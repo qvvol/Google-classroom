@@ -1,0 +1,176 @@
+:root {
+  --bg-deep: #03030b;
+  --neon-cyan: #00f0ff;
+  --neon-purple: #bd00ff;
+  --text-main: #f8fafc;
+  --card-glass: rgba(10, 10, 25, 0.85);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep);
+  color: var(--text-main);
+  font-family: 'Space Grotesk', sans-serif;
+  padding: 40px 20px;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* FIXED: Immersive Space Layer System */
+.space-bg {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1; /* Moves background behind content */
+  background: radial-gradient(circle at center, #0d0b21 0%, #03030b 100%);
+  pointer-events: none;
+}
+
+.stars {
+  background: #000 url('https://imgur.com') repeat;
+  position: absolute;
+  width: 100%; height: 100%; opacity: 0.3;
+}
+
+.shooting-stars {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
+}
+
+.shooting-stars span {
+  position: absolute;
+  top: 10%; right: 10%;
+  width: 4px; height: 4px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 12px #fff;
+  animation: fastShoot 4s linear infinite;
+  opacity: 0;
+}
+
+.shooting-stars span::before {
+  content: ''; position: absolute; top: 50%; width: 180px; height: 2px;
+  background: linear-gradient(90deg, #fff, transparent); transform: translateY(-50%);
+}
+
+.shooting-stars span:nth-child(1) { top: 5%; right: 20%; animation-delay: 0s; animation-duration: 1.5s; }
+.shooting-stars span:nth-child(2) { top: 15%; right: 50%; animation-delay: 1.2s; animation-duration: 2.5s; }
+.shooting-stars span:nth-child(3) { top: 30%; right: 70%; animation-delay: 2.5s; animation-duration: 2s; }
+
+@keyframes fastShoot {
+  0% { transform: rotate(-40deg) translateX(0); opacity: 1; }
+  30% { opacity: 1; }
+  100% { transform: rotate(-40deg) translateX(-1200px); opacity: 0; }
+}
+
+/* FIXED: Added high z-index to push all text and cards onto the visible surface */
+header, main {
+  position: relative;
+  z-index: 10;
+}
+
+/* UI Layout Styles */
+header { text-align: center; margin-bottom: 50px; }
+.logo-container { position: relative; display: inline-block; }
+
+.glitch-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #fff;
+  letter-spacing: 4px;
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+  margin: 0;
+}
+
+.sub-badge {
+  background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple));
+  color: #000; font-family: 'Orbitron', sans-serif;
+  font-size: 0.75rem; font-weight: bold;
+  padding: 4px 10px; border-radius: 20px;
+  letter-spacing: 1px; display: inline-block; margin-top: 5px;
+}
+
+.status-text { color: #64748b; font-size: 0.9rem; margin-top: 10px; }
+.hotkey { background: #334155; color: var(--neon-cyan); padding: 2px 6px; border-radius: 4px; font-weight: bold; }
+
+.control-center { display: flex; flex-direction: column; align-items: center; gap: 20px; margin-top: 30px; }
+.search-wrapper { position: relative; width: 100%; max-width: 450px; }
+
+#searchBar {
+  width: 100%; background: rgba(15, 23, 42, 0.8);
+  border: 2px solid rgba(0, 240, 255, 0.2);
+  padding: 14px 20px 14px 45px; border-radius: 30px;
+  color: #fff; font-family: inherit; font-size: 1rem; box-sizing: border-box;
+  transition: all 0.3s ease; backdrop-filter: blur(10px);
+}
+
+#searchBar:focus {
+  border-color: var(--neon-cyan); box-shadow: 0 0 20px rgba(0, 240, 255, 0.4); outline: none;
+}
+
+.search-icon { position: absolute; left: 18px; top: 15px; color: #64748b; }
+.filter-buttons { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+
+.filter-btn {
+  background: rgba(255, 255, 255, 0.05); color: #94a3b8;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 10px 20px; border-radius: 30px; cursor: pointer;
+  font-weight: 600; transition: all 0.2s ease; font-family: inherit;
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--neon-cyan); color: #000;
+  border-color: var(--neon-cyan); box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+}
+
+/* Grid & Premium Cards Layout */
+.grid-container {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 30px; max-width: 1200px; margin: 0 auto;
+}
+
+.game-card {
+  background: var(--card-glass);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px; padding: 20px; text-align: center;
+  backdrop-filter: blur(12px); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.game-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--neon-purple);
+  box-shadow: 0 15px 30px rgba(189, 0, 255, 0.25);
+}
+
+.card-image-wrap {
+  width: 100%; height: 160px; border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem; background: #0f172a;
+  box-shadow: inset 0 0 20px rgba(0,0,0,0.4);
+}
+
+.game-card h3 {
+  font-family: 'Orbitron', sans-serif; font-size: 1.2rem;
+  margin: 20px 0 15px 0; color: #fff; letter-spacing: 0.5px;
+}
+
+.launch-btn {
+  background: linear-gradient(135deg, var(--neon-purple), #7928ca);
+  color: #fff; border: none; padding: 12px; font-weight: 700;
+  font-family: 'Orbitron', sans-serif; border-radius: 8px;
+  cursor: pointer; width: 100%; letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.game-card:hover .launch-btn {
+  background: linear-gradient(135deg, var(--neon-cyan), #0070f3);
+  color: #000; box-shadow: 0 0 15px var(--neon-cyan);
+}

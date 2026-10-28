@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Google Docs</title>
+  <link rel="icon" type="image/x-icon" href="https://gstatic.com">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://googleapis.com" rel="stylesheet">
+</head>
+<body>
+  
+  <div class="space-bg">
+    <div class="stars"></div>
+    <div class="shooting-stars">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <header>
+    <div class="logo-container">
+      <h1 class="glitch-title" data-text="yrqkks ubg">yrqkks ubg</h1>
+      <span class="sub-badge">V4.0 NETWORK RE-ROUTE</span>
+    </div>
+    <p class="status-text">🪐 [SYSTEM ONLINE] • Press <span class="hotkey">P</span> to instantly escape to Google Classroom</p>
+    
+    <div class="control-center">
+      <div class="search-wrapper">
+        <input type="text" id="searchBar" placeholder="Scan galaxy for popular titles..." onkeyup="filterGames()">
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="filter-buttons">
+        <button class="filter-btn active" onclick="filterCategory('all', event)">🌌 All Sectors</button>
+        <button class="filter-btn" onclick="filterCategory('driving-sports', event)">🏎️ Driving & Sports</button>
+        <button class="filter-btn" onclick="filterCategory('action-shooting', event)">💥 Action & Shooting</button>
+        <button class="filter-btn" onclick="filterCategory('casual-puzzle', event)">🧩 Casual & Puzzle</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="grid-container" id="gameGrid">
+    <!-- DRIVING & SPORTS -->
+    <div class="game-card" data-category="driving-sports">
+      <div class="card-image-wrap" style="background: #ef4444;">🇲⚙️</div>
+      <h3>Moto X3M</h3>
+      <button class="launch-btn" onclick="launchGame('https://github.io')">Launch Pod</button>
+    </div>
+
+    <div class="game-card" data-category="driving-sports">
+      <div class="card-image-wrap" style="background: #3b82f6;">🏈</div>
+      <h3>Retro Bowl</h3>
+      <button class="launch-btn" onclick="launchGame('https://konggames.com')">Launch Pod</button>
+    </div>
+
+    <!-- ACTION & SHOOTING -->
+    <div class="game-card" data-category="action-shooting">
+      <div class="card-image-wrap" style="background: #10b981;">💥</div>
+      <h3>1v1.LOL</h3>
+      <button class="launch-btn" onclick="launchGame('https://googleusercontent.com')">Launch Pod</button>
+    </div>
+
+    <div class="game-card" data-category="action-shooting">
+      <div class="card-image-wrap" style="background: #f59e0b;">🏃</div>
+      <h3>Subway Surfers</h3>
+      <button class="launch-btn" onclick="launchGame('https://github.io')">Launch Pod</button>
+    </div>
+
+    <!-- CASUAL, PUZZLE & RUNNERS -->
+    <div class="game-card" data-category="casual-puzzle">
+      <div class="card-image-wrap" style="background: #8b5cf6;">🟢</div>
+      <h3>Slope</h3>
+      <button class="launch-btn" onclick="launchGame('https://github.io')">Launch Pod</button>
+    </div>
+
+    <div class="game-card" data-category="casual-puzzle">
+      <div class="card-image-wrap" style="background: #ec4899;">🌀</div>
+      <h3>Tunnel Rush</h3>
+      <button class="launch-btn" onclick="launchGame('https://github.io')">Launch Pod</button>
+    </div>
+
+    <div class="game-card" data-category="casual-puzzle">
+      <div class="card-image-wrap" style="background: #06b6d4;">🏃‍♂️</div>
+      <h3>Run 3</h3>
+      <button class="launch-btn" onclick="launchGame('https://github.io')">Launch Pod</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
