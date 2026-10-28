@@ -25,11 +25,31 @@ function filterCategory(category, event) {
 }
 
 function launchGame(url) {
-  // Use direct target navigation windowing to break framing security filters
-  const win = window.open(url, '_blank');
+  const win = window.open('about:blank', '_blank');
   if (!win) {
-    alert("Pop-up blocked! Allow popups to unlock deployment.");
+    alert("Pop-up blocked! Allow popups to unlock your games.");
+    return;
   }
+  
+  win.document.body.style.margin = '0';
+  win.document.body.style.height = '100vh';
+  win.document.body.style.backgroundColor = '#000';
+  
+  win.document.title = "Google Docs";
+  const link = win.document.createElement('link');
+  link.rel = 'icon';
+  link.type = 'image/x-icon';
+  link.href = 'https://gstatic.com';
+  win.document.head.appendChild(link);
+  
+  const iframe = win.document.createElement('iframe');
+  iframe.style.border = 'none';
+  iframe.style.width = '100%';
+  iframe.style.height = '100%';
+  iframe.style.margin = '0';
+  iframe.src = url;
+  
+  win.document.body.appendChild(iframe);
 }
 
 window.addEventListener('keydown', function(e) {
